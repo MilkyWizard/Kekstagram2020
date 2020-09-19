@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм» [![Build status][travis-image]][travis-url]
 
 * Студент: [MilkyWizard](https://up.htmlacademy.ru/javascript/21/user/1152219).
-* Наставник: `Неизвестно`.
+* Наставник: [Алексей Рысев](https://htmlacademy.ru/profile/id63352).
 
 ---
 
