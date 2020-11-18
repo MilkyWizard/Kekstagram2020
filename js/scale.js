@@ -6,42 +6,36 @@ window.scale = (function () {
   const STEP = 25;
   const INITIAL_VALUE = 100;
 
-  let scaleControlValueEl = document.querySelector(`.scale__control--value`);
-  let imgUploadPreviewEl = document.querySelector(`.img-upload__preview`);
-  let buttonZoomOutEl = document.querySelector(`.scale__control--smaller`);
-  let buttonZoomInEl = document.querySelector(`.scale__control--bigger`);
+  const scaleControlValueEl = document.querySelector(`.scale__control--value`);
+  const imgUploadPreviewEl = document.querySelector(`.img-upload__preview`);
+  const buttonZoomOutEl = document.querySelector(`.scale__control--smaller`);
+  const buttonZoomInEl = document.querySelector(`.scale__control--bigger`);
 
-  let getValue = function () {
+  const getValue = function () {
     return parseInt(scaleControlValueEl.value, 10);
   };
 
-  let onButtonZoomInPressed = function () {
-    let valueScale = getValue();
-    if (valueScale < MAX) {
-      valueScale += STEP;
-    }
-    setValue(valueScale);
+  const onButtonZoomInPressed = function () {
+    const valueScale = getValue();
+    setValue(valueScale < MAX ? valueScale + STEP : valueScale);
   };
 
-  let onButtonZoomOutPressed = function () {
-    let valueScale = getValue();
-    if (valueScale > MIN) {
-      valueScale -= STEP;
-    }
-    setValue(valueScale);
+  const onButtonZoomOutPressed = function () {
+    const valueScale = getValue();
+    setValue(valueScale > MIN ? valueScale - STEP : valueScale);
   };
 
-  let setValue = function (valueScale) {
+  const setValue = function (valueScale) {
     scaleControlValueEl.value = valueScale + `%`;
     imgUploadPreviewEl.style.transform = `scale(` + (valueScale / INITIAL_VALUE) + `)`;
   };
 
-  let reset = function () {
+  const reset = function () {
     buttonZoomInEl.removeEventListener(`click`, onButtonZoomInPressed);
     buttonZoomOutEl.removeEventListener(`click`, onButtonZoomOutPressed);
   };
 
-  let init = function () {
+  const init = function () {
     setValue(MAX);
     buttonZoomInEl.addEventListener(`click`, onButtonZoomInPressed);
     buttonZoomOutEl.addEventListener(`click`, onButtonZoomOutPressed);
